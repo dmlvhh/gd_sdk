@@ -62,7 +62,7 @@ func TestManualChangeSimImei(t *testing.T) {
 func TestBatchQuerySimFlow(t *testing.T) {
 	res, err := BatchQuerySimFlow(&BatchQuerySimFlowReq{
 		Iccids:    []string{"89861590082420569601"},
-		QueryDate: "202411",
+		QueryDate: "202412",
 	})
 	if err != nil {
 		fmt.Println(err)
@@ -86,8 +86,8 @@ func TestQueryResultsAsynchronously(t *testing.T) {
 }
 
 func TestQueryBasicInfoBatch(t *testing.T) {
-	res, err := QueryBasicInfoBatch(&QueryBasicInfoBatchReq{
-		Iccids: []string{"89861590082420569601"},
+	res, err := gdSdk.QueryBasicInfoBatch(&QueryBasicInfoBatchReq{
+		Iccids: []string{"89861590082420214994"},
 	})
 	if err != nil {
 		fmt.Println(err)

@@ -5,16 +5,16 @@ import (
 	"log"
 )
 
-//var gdSdk *Config
-//
-//func init() {
-//	gdSdk = NewConfig(&Config{
-//		ApiURL:    "https://122.192.50.42:11060/ipa/api/v1/wlqd",
-//		AppID:     "1847483747142742018",
-//		AppKey:    "QRAXmCI0DuJOvucX2Kh9FiyGZA38Eoba",
-//		AppSecret: "5xYx0jWdp9KE8UVsWK4y2UDBUlc8w14s",
-//	})
-//}
+var gdSdk *Config
+
+func init() {
+	gdSdk = NewConfig(&Config{
+		ApiURL:    "https://122.192.50.42:11060/ipa/api/v1/wlqd",
+		AppID:     "1847483747142742018",
+		AppKey:    "QRAXmCI0DuJOvucX2Kh9FiyGZA38Eoba",
+		AppSecret: "5xYx0jWdp9KE8UVsWK4y2UDBUlc8w14s",
+	})
+}
 
 // ChangeSimcardStatus 物联网卡停复机 此接口不可频繁调用，同号码，相同操作，5分钟内最多调用3次。
 func ChangeSimcardStatus(req *ChangeSimcardStatusReq) (res Response, err error) {
@@ -83,7 +83,7 @@ func QueryResultsAsynchronously(req *QueryResultsAsynchronouslyReq) (res QueryRe
 }
 
 // QueryBasicInfoBatch 物联卡批量查询
-func QueryBasicInfoBatch(req *QueryBasicInfoBatchReq) (res QueryBasicInfoBatchRes, err error) {
+func (c *Config) QueryBasicInfoBatch(req *QueryBasicInfoBatchReq) (res QueryBasicInfoBatchRes, err error) {
 	request, err := ApiRequest("/queryBasicInfoBatch", req)
 	if err != nil {
 		log.Fatalf("queryBasicInfoBatch: %s", err)

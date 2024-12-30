@@ -22,6 +22,7 @@ func ApiRequest(url string, data any) (res string, err error) {
 		AppId:     gdSdk.AppID,
 		Timestamp: GetNowUnixTime(),
 	})
+	//fmt.Println(string(reqData))
 	if err != nil {
 		log.Printf("Error Marshal: %s", err)
 		return
