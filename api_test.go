@@ -21,7 +21,8 @@ func TestChangeSimcardStatus(t *testing.T) {
 
 func TestBatchChangeSimcardStatus(t *testing.T) {
 	res, err := BatchChangeSimcardStatus(&BatchChangeSimcardStatusReq{
-		Iccids:   []string{"89861590082420569601"},
+		//Iccids:   []string{"89861590082420569601"},
+		Iccids:   []string{"89861590092420070096"},
 		OperType: "0",
 	})
 	if err != nil {
@@ -61,8 +62,9 @@ func TestManualChangeSimImei(t *testing.T) {
 
 func TestBatchQuerySimFlow(t *testing.T) {
 	res, err := BatchQuerySimFlow(&BatchQuerySimFlowReq{
-		Iccids:    []string{"89861590082420569601"},
-		QueryDate: "202412",
+		//Iccids:    []string{"89861590082420569601"},
+		Iccids:    []string{"89861590092420070041"},
+		QueryDate: "202501",
 	})
 	if err != nil {
 		fmt.Println(err)
@@ -87,7 +89,8 @@ func TestQueryResultsAsynchronously(t *testing.T) {
 
 func TestQueryBasicInfoBatch(t *testing.T) {
 	res, err := gdSdk.QueryBasicInfoBatch(&QueryBasicInfoBatchReq{
-		Iccids: []string{"89861590082420214994"},
+		//Iccids: []string{"89861590082420214994"},
+		Iccids: []string{"89861590092420070041"},
 	})
 	if err != nil {
 		fmt.Println(err)

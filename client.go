@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -31,6 +32,7 @@ func ApiRequest(url string, data any) (res string, err error) {
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // 不安全，仅用于测试
 	}
 	client := &http.Client{Transport: tr}
+	fmt.Println(gdSdk.ApiURL + url)
 	resp, err := client.Post(gdSdk.ApiURL+url, "application/json", bytes.NewBuffer(reqData))
 	if err != nil {
 		log.Printf("Error making POST request: %s", err)
