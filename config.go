@@ -10,17 +10,17 @@ type Config struct {
 	Sign      string `json:"sign"`
 }
 
-// NewConfig 创建一个新的配置实例
-func NewConfig(conf *Config) *Config {
-	sign := GenerateSignature(conf.AppKey, conf.AppSecret)
+func NewConfig(apiUrl, appID, appKey, appSecret string) *Config {
+	sign := GenerateSignature(appKey, appSecret)
 	return &Config{
-		ApiURL:    conf.ApiURL,
-		AppID:     conf.AppID,
-		AppKey:    conf.AppKey,
-		AppSecret: conf.AppSecret,
+		ApiURL:    apiUrl,
+		AppID:     appID,
+		AppKey:    appKey,
+		AppSecret: appSecret,
 		Sign:      sign,
 	}
 }
+
 func (c *Config) String() string {
 	data, _ := json.MarshalIndent(c, "", "  ")
 	return string(data)

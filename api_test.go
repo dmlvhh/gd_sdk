@@ -6,8 +6,14 @@ import (
 	"testing"
 )
 
+var gdSdk *Config
+
+func init() {
+	gdSdk = NewConfig("https://122.192.50.42:11060/ipa/api/v1/wlqd", "1847483747142742018", "QRAXmCI0DuJOvucX2Kh9FiyGZA38Eoba", "5xYx0jWdp9KE8UVsWK4y2UDBUlc8w14s")
+}
+
 func TestChangeSimcardStatus(t *testing.T) {
-	res, err := ChangeSimcardStatus(&ChangeSimcardStatusReq{
+	res, err := gdSdk.ChangeSimcardStatus(&ChangeSimcardStatusReq{
 		Iccid:    "89861590082420569601",
 		OperType: "0",
 	})
@@ -20,9 +26,8 @@ func TestChangeSimcardStatus(t *testing.T) {
 }
 
 func TestBatchChangeSimcardStatus(t *testing.T) {
-	res, err := BatchChangeSimcardStatus(&BatchChangeSimcardStatusReq{
-		//Iccids:   []string{"89861590082420569601"},
-		Iccids:   []string{"89861590092420070096"},
+	res, err := gdSdk.BatchChangeSimcardStatus(&BatchChangeSimcardStatusReq{
+		Iccids:   []string{"89861590082420569601"},
 		OperType: "0",
 	})
 	if err != nil {
@@ -34,7 +39,7 @@ func TestBatchChangeSimcardStatus(t *testing.T) {
 }
 
 func TestChangeSimcardLimit(t *testing.T) {
-	res, err := ChangeSimcardLimit(&ChangeSimcardLimitReq{
+	res, err := gdSdk.ChangeSimcardLimit(&ChangeSimcardLimitReq{
 		Iccid: "89861590082420569601",
 		Code:  "2-512kbps",
 	})
@@ -47,7 +52,7 @@ func TestChangeSimcardLimit(t *testing.T) {
 }
 
 func TestManualChangeSimImei(t *testing.T) {
-	res, err := ManualChangeSimImei(&ManualChangeSimImeiReq{
+	res, err := gdSdk.ManualChangeSimImei(&ManualChangeSimImeiReq{
 		Iccid:   "89861590082420569601",
 		OldImei: "1234567890111",
 		NewImei: "1234567890112",
@@ -61,10 +66,9 @@ func TestManualChangeSimImei(t *testing.T) {
 }
 
 func TestBatchQuerySimFlow(t *testing.T) {
-	res, err := BatchQuerySimFlow(&BatchQuerySimFlowReq{
-		//Iccids:    []string{"89861590082420569601"},
-		Iccids:    []string{"89861590092420070041"},
-		QueryDate: "202501",
+	res, err := gdSdk.BatchQuerySimFlow(&BatchQuerySimFlowReq{
+		Iccids:    []string{"89861590082420569601"},
+		QueryDate: "202412",
 	})
 	if err != nil {
 		fmt.Println(err)
@@ -75,7 +79,7 @@ func TestBatchQuerySimFlow(t *testing.T) {
 }
 
 func TestQueryResultsAsynchronously(t *testing.T) {
-	res, err := QueryResultsAsynchronously(&QueryResultsAsynchronouslyReq{
+	res, err := gdSdk.QueryResultsAsynchronously(&QueryResultsAsynchronouslyReq{
 		SerialNumber: "17735778075672xxxx",
 	})
 
@@ -89,8 +93,7 @@ func TestQueryResultsAsynchronously(t *testing.T) {
 
 func TestQueryBasicInfoBatch(t *testing.T) {
 	res, err := gdSdk.QueryBasicInfoBatch(&QueryBasicInfoBatchReq{
-		//Iccids: []string{"89861590082420214994"},
-		Iccids: []string{"89861590092420070041"},
+		Iccids: []string{"89861590082420214994"},
 	})
 	if err != nil {
 		fmt.Println(err)
