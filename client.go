@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func ApiRequest(url string, data any) (res string, err error) {
+func (c *Config) ApiRequest(url string, data any) (res string, err error) {
 
 	//appKey := "QRAXmCI0DuJOvucX2Kh9FiyGZA38Eoba"
 	//appSecret := "5xYx0jWdp9KE8UVsWK4y2UDBUlc8w14s"
@@ -17,9 +17,9 @@ func ApiRequest(url string, data any) (res string, err error) {
 	//url = "https://122.192.50.42:11060/ipa/api" + url
 	//fmt.Println(gdSdk)
 	reqData, err := json.Marshal(Request{
-		Sign:      gdSdk.Sign,
+		Sign:      c.Sign,
 		Body:      data,
-		AppId:     gdSdk.AppID,
+		AppId:     c.AppID,
 		Timestamp: GetNowUnixTime(),
 	})
 	//fmt.Println(string(reqData))
@@ -31,7 +31,7 @@ func ApiRequest(url string, data any) (res string, err error) {
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // 不安全，仅用于测试
 	}
 	client := &http.Client{Transport: tr}
-	resp, err := client.Post(gdSdk.ApiURL+url, "application/json", bytes.NewBuffer(reqData))
+	resp, err := client.Post(c.ApiURL+url, "application/json", bytes.NewBuffer(reqData))
 	if err != nil {
 		log.Printf("Error making POST request: %s", err)
 		return
