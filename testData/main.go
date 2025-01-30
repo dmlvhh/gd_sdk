@@ -13,7 +13,8 @@ func main() {
 	//	QueryDate: "202501",
 	//})
 	res, err := gd.QueryBasicInfoBatch(&gd_sdk.QueryBasicInfoBatchReq{
-		Iccids: []string{"89861590082420210118"},
+		//Iccids: []string{"89861590082420211505"},
+		Iccids: []string{"89861590082420212359"},
 	})
 	if err != nil {
 		return

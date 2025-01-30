@@ -9,7 +9,7 @@ import (
 func (c *Config) ChangeSimcardStatus(req *ChangeSimcardStatusReq) (res *Response, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/changeSimcardStatus", req)
 	if err != nil {
-		log.Fatalf("changeSimcardStatus: %s", err)
+		log.Printf("changeSimcardStatus: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -20,7 +20,7 @@ func (c *Config) ChangeSimcardStatus(req *ChangeSimcardStatusReq) (res *Response
 func (c *Config) BatchChangeSimcardStatus(req *BatchChangeSimcardStatusReq) (res *BatchChangeSimcardStatusRes, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/batchChangeSimcardStatus", req)
 	if err != nil {
-		log.Fatalf("batchChangeSimcardStatus: %s", err)
+		log.Printf("batchChangeSimcardStatus: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -31,7 +31,7 @@ func (c *Config) BatchChangeSimcardStatus(req *BatchChangeSimcardStatusReq) (res
 func (c *Config) ChangeSimcardLimit(req *ChangeSimcardLimitReq) (res *Response, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/changeSimcardLimit", req)
 	if err != nil {
-		log.Fatalf("changeSimcardLimit: %s", err)
+		log.Printf("changeSimcardLimit: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -42,7 +42,7 @@ func (c *Config) ChangeSimcardLimit(req *ChangeSimcardLimitReq) (res *Response, 
 func (c *Config) ManualChangeSimImei(req *ManualChangeSimImeiReq) (res *Response, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/manualChangeSimImei", req)
 	if err != nil {
-		log.Fatalf("manualChangeSimImei: %s", err)
+		log.Printf("manualChangeSimImei: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -53,7 +53,7 @@ func (c *Config) ManualChangeSimImei(req *ManualChangeSimImeiReq) (res *Response
 func (c *Config) BatchQuerySimFlow(req *BatchQuerySimFlowReq) (res *BatchQuerySimFlowRes, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/batchQuerySimFlow", req)
 	if err != nil {
-		log.Fatalf("batchQuerySimFlow: %s", err)
+		log.Printf("batchQuerySimFlow: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -64,7 +64,7 @@ func (c *Config) BatchQuerySimFlow(req *BatchQuerySimFlowReq) (res *BatchQuerySi
 func (c *Config) QueryResultsAsynchronously(req *QueryResultsAsynchronouslyReq) (res *QueryResultsAsynchronouslyRes, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/queryResultsAsynchronously", req)
 	if err != nil {
-		log.Fatalf("queryResultsAsynchronously: %s", err)
+		log.Printf("queryResultsAsynchronously: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
@@ -75,7 +75,7 @@ func (c *Config) QueryResultsAsynchronously(req *QueryResultsAsynchronouslyReq) 
 func (c *Config) QueryBasicInfoBatch(req *QueryBasicInfoBatchReq) (res *QueryBasicInfoBatchRes, err error) {
 	request, err := c.ApiRequest("/ipa/api/v1/wlqd/queryBasicInfoBatch", req)
 	if err != nil {
-		log.Fatalf("queryBasicInfoBatch: %s", err)
+		log.Printf("queryBasicInfoBatch: %s", err)
 		return
 	}
 	err = json.Unmarshal([]byte(request), &res)
